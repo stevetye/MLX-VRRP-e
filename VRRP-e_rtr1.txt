@@ -1,3 +1,8 @@
+!General Reminders
+!
+!Higher priority becomes master (VRRP) or active (VRRP-E)
+!VRRP-E Extension for Server Virtualization -- a.k.a. short-path forwarding
+!
 !I have configured two virtual IP addresses in the same subnet on a single interface in each of two routers.  
 !This configuration could be used for load sharing in a subnet.  Suppose half of the hosts hanging off this 
 !interface pair use .254 as a DG, and the other half use .253.  Under normal operating conditions, Router1 
