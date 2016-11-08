@@ -1,0 +1,23 @@
+!I have configured two virtual IP addresses in the same subnet on a single interface in each of two routers.  
+!This configuration could be used for load sharing in a subnet.  Suppose half of the hosts hanging off this 
+!interface pair use .254 as a DG, and the other half use .253.  Under normal operating conditions, Router1 
+!is the DG for the .254 group and Router2 is the DG for the .253 group.  If either goes down, the affected 
+!group merely switches to the other router.
+!
+!Track port is not mandatory.  
+router vrrp-extended
+ interface ethernet 5/1
+ ip address 192.53.5.3/24
+ ip vrrp-extended vrid 1
+  backup priority 100 track-priority 20
+  track-port ethernet 3/2
+  ip-address 192.53.5.254
+  activate
+  exit
+ interface ethernet 5/1
+ ip vrrp-extended vrid 2
+  backup priority 110 track-priority 20
+  track-port ethernet 2/4
+  ip-address 192.53.5.253
+  activate
+
